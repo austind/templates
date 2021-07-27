@@ -1,0 +1,12 @@
+!
+interface range GigabitEthernet1/0/1-48
+ switchport host
+ switchport access vlan {{ access_vlan }}
+ switchport voice vlan {{ voice_vlan }}
+!
+interface range TenGigabitEthernet1/1/1-4
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/1
+ desc UPLINK to {{ uplink_switch }}
+!

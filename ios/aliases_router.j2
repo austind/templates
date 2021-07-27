@@ -1,0 +1,4 @@
+! Aliases
+alias exec shr show running-config
+alias exec backup copy running-config tftp://{{ global.syslog_server }}/router\{{ hostname }}.conf
+!

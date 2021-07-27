@@ -1,0 +1,8 @@
+! VLANs
+vlan {{ access_vlan or 1 }}
+ name Access
+vlan {{ voice_vlan or 530 }}
+ name Voice
+vlan {{ mgmt_vlan or 10 }}
+ name Mgmt
+!

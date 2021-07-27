@@ -1,0 +1,8 @@
+! EIGRP
+ip routing
+router eigrp 10
+ network 10.0.0.0
+!
+! Default route
+ip route 0.0.0.0 0.0.0.0 {{ default_gateway }}
+!

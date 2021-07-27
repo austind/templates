@@ -1,0 +1,7 @@
+! STP
+spanning-tree vlan 1-4094 root primary
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+errdisable recovery cause bpduguard
+errdisable recovery interval 300
+!

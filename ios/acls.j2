@@ -1,0 +1,8 @@
+! Access lists
+access-list 10 remark --- SSH ACCESS ---
+access-list 10 permit {{ global.acl_ssh_jumphost_server }}
+access-list 10 permit {{ global.acl_ssh_securenet_id }} {{ global.acl_ssh_securenet_wildcard }}
+access-list 20 remark --- SNMP ACCESS ---
+access-list 20 permit {{ global.acl_snmp_nms_server }}
+access-list 20 permit {{ global.acl_snmp_securenet_id }} {{ global.acl_snmp_securenet_wildcard }}
+!

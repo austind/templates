@@ -1,0 +1,27 @@
+!
+hostname {{ hostname }}
+!
+! Enable global services 
+service nagle
+service timestamps debug datetime localtime msec show-timezone
+service timestamps log datetime localtime msec show-timezone
+service password-encryption
+service tcp-keepalives-in
+lldp run
+ip classless
+ip subnet-zero
+service unsupported-transceiver
+no errdisable detect cause gbic-invalid
+!
+! Disable global services
+no service finger
+no service pad
+no service udp-small-servers
+no service tcp-small-servers
+no ip source-route
+no enable password
+no ip http server
+no ip http secure-server
+no service config
+no ip gratuitous-arps
+!

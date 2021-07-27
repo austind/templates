@@ -1,0 +1,10 @@
+! Logging
+logging console notifications
+logging buffered 16384
+logging trap warning
+logging facility local7
+logging {{ global.syslog_server }}
+logging source-interface {{ mgmt_int }}
+login on-failure log
+login on-success log
+!

@@ -1,0 +1,5 @@
+! AAA
+aaa new-model
+aaa authentication login {{ global.aaa_group }} local
+aaa authorization exec default local if-authenticated
+!

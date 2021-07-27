@@ -1,0 +1,10 @@
+! SNMPv3
+snmp-server contact {{ global.snmp_contact }}
+snmp-server ifindex persist
+snmp-server system-shutdown
+snmp-server view {{ global.snmpv3_view }} internet included
+snmp-server group {{ global.snmpv3_group }} v3 priv read {{ global.snmpv3_view }} write {{ global.snmpv3_view }} access 20
+snmp-server user {{ global.snmpv3_user }} {{ global.snmpv3_group }} v3 auth md5 {{ global.snmpv3_auth_pass }} priv des {{ global.snmpv3_priv_pass }}
+snmp-server location {{ snmp_location }}
+no snmp-server community secretcommunity RO
+!
