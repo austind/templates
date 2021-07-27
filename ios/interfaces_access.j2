@@ -5,16 +5,15 @@ interface {{ mgmt_int }}
  no ip route-cache
  no shutdown
 !
-{% if camera_vlan %}
- {% if 'C3' in model %}
-  {% set access_slot = 'GigabitEthernet0' %}
- {% else %}
-  {% set access_slot = 'GigabitEthernet1/0' %}
- {% endif %}
+{% if camera_vlan -%}
+ {% if 'C3' in model -%}
+  {% set access_slot = 'GigabitEthernet0' -%}
+ {% else -%}
+  {% set access_slot = 'GigabitEthernet1/0' -%}
+ {% endif -%}
 interface range {{ access_slot }}/1-6
  description Camera
  switchport host
  switchport access vlan {{ camera_vlan }}
 !
-{% endif %}
-
+{% endif -%}
