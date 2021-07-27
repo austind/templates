@@ -40,4 +40,7 @@
 {% include '~/templates/ios/interfaces_c3560-48.j2' %}
 {% endif %}
 !
+! Device-specific extra config
+{% include '~/config/' + hostname + '-extra.cfg' ignore missing %}
+!
 end
