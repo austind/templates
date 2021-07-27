@@ -1,6 +1,8 @@
 ! Model: {{ model }}
 ! Role: {{ role }}
 !
+hostname {{ hostname }}
+!
 ! Global & Role/Family-specific config
 {% include '~/templates/ios/aaa.j2' %}
 {% include '~/templates/ios/aliases_' + role + '.j2' %}
