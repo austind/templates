@@ -1,0 +1,102 @@
+hostname "{{ hostname }}"
+snmp-server contact "{{ snmp_contact }}" location "{{ snmp_location }}"
+alias "bk" "backup startup-configuration to {{ global.tftp_server }} switch/{{ hostname }}.conf"
+ip default-gateway {{ mgmt_gateway }}
+dhcp-snooping
+dhcp-snooping authorized-server {{ dhcp_server }}
+dhcp-snooping vlan all
+dhcp-snooping trust 49-52
+console idle-timeout 900
+console idle-timeout serial-usb 900
+logging {{ syslog_server }}
+logging severity warning
+include-credentials
+encrypt-credentials pre-shared-key plaintext {{ global.cred_secret }}
+password manager user-name "{{ global.manager_username }}" sha1 "{{ global.manager_password_hash }}"
+ip authorized-managers {{ global.acl_snmp_securenet_id }} {{ global.acl_snmp_securenet_netmask }} access manager access-method snmp
+ip authorized-managers {{ global.acl_ssh_jumphost_server }} 255.255.255.255 access manager
+ip dns domain-name "{{ domain_name }}"
+no autorun
+no telnet-server
+no tftp server
+no web-management
+no telnet-server
+no dhcp config-file-update
+no dhcp image-file-update
+crypto key generate ssh
+ip ssh
+idle-timeout 15
+timesync ntp
+ntp unicast
+ntp server {{ global.ntp_server }} iburst
+ntp enable
+time daylight-time-rule continental-us-and-canada
+time timezone -480
+int 1-48 poe-lldp-detect enabled
+banner exec $
+ ******************************   WARNING !!!!   *******************************
+ *                                                                             *
+ * This system is solely for the use of authorized users for official purposes.*
+ * You have no expectation of privacy in its use and to ensure that the system *
+ * is functioning properly, individuals using this computer system are subject *
+ * to having all of their activities monitored and recorded by system          *
+ * personnel.  Use of this system evidences an express consent to such         *
+ * monitoring and agreement that if such monitoring reveals evidence of        *
+ * possible abuse or criminal activity, system personnel may provide the       *
+ * results of such monitoring to appropriate officials.                        *
+ *                                                                             *
+ *******************************************************************************
+$
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-52
+   no ip address
+   no ipv6 address dhcp full
+   no ipv6 enable
+   exit
+vlan 10
+   name "Staff"
+   tagged 49-52
+   no ip address
+   exit
+vlan 20
+   name "Student"
+   untagged 1-48
+   tagged 49-52
+   no ip address
+   exit
+vlan 30
+   name "Guest"
+   tagged 49-52
+   no ip address
+   exit
+vlan 40
+   name "Cameras"
+   tagged 49-52
+   no ip address
+   exit
+vlan 50
+   name "Management"
+   tagged 49-52
+   ip address {{ mgmt_address }} {{ mgmt_netmask }}
+   exit
+vlan 530
+   name "Voice"
+   voice
+   tagged 1-52
+   no ip address
+   exit
+allow-unsupported-transceiver
+copp traffic-class all limit default
+spanning-tree extend system-id
+spanning-tree mode rapid-pvst
+spanning-tree 1-48 bpdu-protection root-guard loop-guard tcn-guard admin-edge-port
+spanning-tree bpdu-protection-timeout 300
+spanning-tree enable
+snmp-server response-source dst-ip-of-request
+snmpv3 enable
+snmpv3 only
+snmpv3 restricted-access
+snmpv3 user {{ global.snmpv3_user }} auth sha {{ global.snmpv3_auth_pass }} priv aes {{ global.snmpv3_priv_pass }}
+snmpv3 group managerpriv user "{{ global.snmpv3_user }}" sec-model ver3
+no snmpv3 user initial
