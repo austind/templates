@@ -8,12 +8,12 @@
 {% include '~/templates/ios/banner_login.j2' %}
 {% include '~/templates/ios/console_vty.j2' %}
 {% include '~/templates/ios/date_time.j2' %}
-{% if 'C3' in model %}
+{% if 'C3' in model -%}
 {% include '~/templates/ios/dns_cat3k.j2' %}
-{% endif %}
-{% if 'C9' in model %}
+{% endif -%}
+{% if 'C9' in model -%}
 {% include '~/templates/ios/dns_cat3k.j2' %}
-{% endif %}
+{% endif -%}
 {% include '~/templates/ios/global.j2' %}
 {% include '~/templates/ios/interfaces_global.j2' %}
 {% include '~/templates/ios/interfaces_' + role + '.j2' %}
@@ -27,18 +27,18 @@
 {% include '~/templates/ios/vtp.j2' %}
 !
 ! Model-specific config
-{% if 'C9500-48Y4C' in model %}
+{% if 'C9500-48Y4C' in model -%}
 {% include '~/templates/ios/interfaces_c9500-48y4c.j2' %}
-{% endif %}
-{% if 'C9500-24Y4C' in model %}
+{% endif -%}
+{% if 'C9500-24Y4C' in model -%}
 {% include '~/templates/ios/interfaces_c9500-24y4c.j2' %}
-{% endif %}
-{% if 'C9300-48' in model or 'C9200-48' in model %}
+{% endif -%}
+{% if 'C9300-48' in model or 'C9200-48' in model -%}
 {% include '~/templates/ios/interfaces_c9300_c9200-48.j2' %}
-{% endif %}
-{% if 'C3560-48' in model %}
+{% endif -%}
+{% if 'C3560-48' in model -%}
 {% include '~/templates/ios/interfaces_c3560-48.j2' %}
-{% endif %}
+{% endif -%}
 !
 ! Device-specific extra config
 {% include '~/config/' + hostname + '-extra.cfg' ignore missing %}
