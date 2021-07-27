@@ -3,7 +3,7 @@
 !
 ! Global & Role/Family-specific config
 {% include '~/templates/aaa.j2' %}
-{% include '~/templates/aliases_' + role '.j2' %}
+{% include '~/templates/aliases_' + role + '.j2' %}
 {% include '~/templates/acls.j2' %}
 {% include '~/templates/banner_login.j2' %}
 {% include '~/templates/console_vty.j2' %}
@@ -11,7 +11,7 @@
 {% if 'C3' in model %}
 {% include '~/templates/dns_cat3k.j2' %}
 {% endif %}
-{% if 'C9' in model -}
+{% if 'C9' in model %}
 {% include '~/templates/dns_cat3k.j2' %}
 {% endif %}
 {% include '~/templates/global.j2' %}
