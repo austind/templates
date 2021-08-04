@@ -1,0 +1,10 @@
+! DNS
+{% if 'C3' in model -%}
+ip domain-name {{ global.domain_name }}
+ip name-server {{ global.dns1 }}
+ip name-server {{ global.dns2 }}
+{% else -%}
+ip domain name {{ global.domain_name }}
+ip name-server {{ global.dns1 }} {{ global.dns2 }}
+{% endif -%}
+!

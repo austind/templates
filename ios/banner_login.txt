@@ -1,0 +1,12 @@
+ ******************************   WARNING !!!!   *******************************
+ *                                                                             *
+ * This system is solely for the use of authorized users for official purposes.*
+ * You have no expectation of privacy in its use and to ensure that the system *
+ * is functioning properly, individuals using this computer system are subject *
+ * to having all of their activities monitored and recorded by system          *
+ * personnel.  Use of this system evidences an express consent to such         *
+ * monitoring and agreement that if such monitoring reveals evidence of        *
+ * possible abuse or criminal activity, system personnel may provide the       *
+ * results of such monitoring to appropriate officials.                        *
+ *                                                                             *
+ *******************************************************************************
