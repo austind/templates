@@ -4,37 +4,37 @@
 hostname {{ hostname }}
 !
 ! Global & Role/Family-specific config
-{% include '/root/templates/ios/aaa.j2' %}
-{% include '/root/templates/ios/aliases_' + role + '.j2' %}
-{% include '/root/templates/ios/acls.j2' %}
-{% include '/root/templates/ios/banner_login.j2' %}
-{% include '/root/templates/ios/console_vty.j2' %}
-{% include '/root/templates/ios/date_time.j2' %}
-{% include '/root/templates/ios/dns.j2' %}
-{% include '/root/templates/ios/global.j2' %}
-{% include '/root/templates/ios/interfaces_global.j2' %}
-{% include '/root/templates/ios/interfaces_' + role + '.j2' %}
-{% include '/root/templates/ios/logging.j2' %}
-{% include '/root/templates/ios/routing_' + role + '.j2' %}
-{% include '/root/templates/ios/snmp.j2' %}
-{% include '/root/templates/ios/ssh.j2' %}
-{% include '/root/templates/ios/stp_' + role + '.j2' %}
-{% include '/root/templates/ios/users_' + role + '.j2' %}
-{% include '/root/templates/ios/vlans.j2' %}
-{% include '/root/templates/ios/vtp.j2' %}
+{% include global.template_path + '/ios/aaa.j2' %}
+{% include global.template_path + '/ios/aliases_' + role + '.j2' %}
+{% include global.template_path + '/ios/acls.j2' %}
+{% include global.template_path + '/ios/banner_login.j2' %}
+{% include global.template_path + '/ios/console_vty.j2' %}
+{% include global.template_path + '/ios/date_time.j2' %}
+{% include global.template_path + '/ios/dns.j2' %}
+{% include global.template_path + '/ios/global.j2' %}
+{% include global.template_path + '/ios/interfaces_global.j2' %}
+{% include global.template_path + '/ios/interfaces_' + role + '.j2' %}
+{% include global.template_path + '/ios/logging.j2' %}
+{% include global.template_path + '/ios/routing_' + role + '.j2' %}
+{% include global.template_path + '/ios/snmp.j2' %}
+{% include global.template_path + '/ios/ssh.j2' %}
+{% include global.template_path + '/ios/stp_' + role + '.j2' %}
+{% include global.template_path + '/ios/users_' + role + '.j2' %}
+{% include global.template_path + '/ios/vlans.j2' %}
+{% include global.template_path + '/ios/vtp.j2' %}
 !
 ! Model-specific config
 {% if 'C9500-48Y4C' in model -%}
-{% include '/root/templates/ios/interfaces_c9500-48y4c.j2' %}
+{% include global.template_path + '/ios/interfaces_c9500-48y4c.j2' %}
 {% endif -%}
 {% if 'C9500-24Y4C' in model -%}
-{% include '/root/templates/ios/interfaces_c9500-24y4c.j2' %}
+{% include global.template_path + '/ios/interfaces_c9500-24y4c.j2' %}
 {% endif -%}
 {% if 'C9300' in model or 'C9200' in model -%}
-{% include '/root/templates/ios/interfaces_c9300_c9200-48.j2' %}
+{% include global.template_path + '/ios/interfaces_c9300_c9200-48.j2' %}
 {% endif -%}
 {% if 'C3560-48' in model -%}
-{% include '/root/templates/ios/interfaces_c3560-48.j2' %}
+{% include global.template_path + '/ios/interfaces_c3560-48.j2' %}
 {% endif -%}
 !
 ! Device-specific extra config
