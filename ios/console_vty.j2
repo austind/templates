@@ -1,6 +1,7 @@
 ! Console and VTY
 line con 0
  exec-timeout 15 0
+ privilege level 15
  logging synchronous
  login authentication {{ global.aaa_group }}
  stopbits 1
