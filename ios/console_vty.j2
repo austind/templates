@@ -1,13 +1,17 @@
 ! Console and VTY
 line con 0
- login authentication {{ global.aaa_group }}
- no password
  exec-timeout 15 0
  logging synchronous
-line vty 0 15
  login authentication {{ global.aaa_group }}
- no password
- exec-timeout 15 0
+ stopbits 1
+line vty 0 4
  access-class 10 in
+ exec-timeout 15 0
+ login authentication {{ global.aaa_group }}
+ transport input ssh
+line vty 5 15
+ access-class 10 in
+ exec-timeout 15 0
+ login authentication {{ global.aaa_group }}
  transport input ssh
 !
