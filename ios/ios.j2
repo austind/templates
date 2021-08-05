@@ -5,7 +5,7 @@ hostname {{ hostname }}
 !
 ! Global & Role/Family-specific config
 {% include global.template_path + '/ios/aaa.j2' %}
-{% include global.template_path + '/ios/aliases_' + role + '.j2' %}
+{% include global.template_path + '/ios/aliases.j2' %}
 {% include global.template_path + '/ios/acls.j2' %}
 {% include global.template_path + '/ios/banner_login.j2' %}
 {% include global.template_path + '/ios/console_vty.j2' %}
