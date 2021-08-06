@@ -1,8 +1,8 @@
 ! Clock and NTP
 ntp authenticate
-ntp authentication-key {{ global.ntp_trusted_key }} md5 {{ global.ntp_auth_pass }}
-ntp trusted-key {{ global.ntp_trusted_key }}
-ntp server {{ global.ntp_server }} key {{ global.ntp_trusted_key }}
+ntp authentication-key {{ global.ntp_key_id }} md5 {{ global.ntp_auth_pass }}
+ntp trusted-key {{ global.ntp_key_id }}
+ntp server {{ global.ntp_server }} key {{ global.ntp_key_id }}
 clock timezone {{ global.clock_timezone }}
 clock summer-time {{ global.clock_summer_time }}
 !
