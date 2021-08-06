@@ -2,5 +2,5 @@
 alias exec shr show running-config
 alias exec backup copy running-config tftp://{{ global.tftp_server }}/configs\{{ hostname }}.conf
 alias exec shint show interfaces status
-alias exec ship show ip interfaces brief
+alias exec ship show ip interface brief
 !
