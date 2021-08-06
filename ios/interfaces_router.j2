@@ -1,6 +1,32 @@
+{% if ansible_network_resources is defined -%}
+{% set ns = namespace(mgmt_int='', mgmt_netmask='', uplink_switch='' ) %}
+{% for iface in ansible_network_resources.l3_interfaces -%}
+{% if iface.ipv4 is defined -%}
+{% if mgmt_ip_address == iface.ipv4[0].address.split(' ')[0] -%}
+{% set ns.mgmt_int = iface.name %}
+{% set addr_netmask = iface.ipv4[0].address.split(' ') -%}
+{% set ns.mgmt_netmask = addr_netmask[1] -%}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if ansible_net_neighbors is defined -%}
+{% set ns.uplink_switch = ansible_net_neighbors[ns.mgmt_int][0].host.split('.')[0] %}
+{% endif %}
+{% if ns.mgmt_int is defined %}
+{% set mgmt_int = ns.mgmt_int %}
+{% endif %}
+{% if ns.mgmt_netmask is defined %}
+{% set mgmt_netmask = ns.mgmt_netmask %}
+{% endif %}
+{% if ns.uplink_switch is defined %}
+{% set uplink_switch = ns.uplink_switch %}
+{% endif %}
 !
 interface {{ mgmt_int }}
+ {% if uplink_switch is defined -%}
  desc UPLINK to {{ uplink_switch }}
+ {% endif -%}
  no switchport
  ip address {{ mgmt_ip_address }} {{ mgmt_netmask }}
  no ip directed-broadcast
