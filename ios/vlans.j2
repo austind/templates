@@ -1,8 +1,8 @@
 ! VLANs
-vlan {{ access_vlan or 1 }}
+vlan {{ access_vlan | default(1) }}
  name Access
-vlan {{ voice_vlan or 530 }}
+vlan {{ voice_vlan | default(530) }}
  name Voice
-vlan {{ mgmt_vlan or 10 }}
+vlan {{ mgmt_vlan | default(10) }}
  name Mgmt
 !

@@ -1,3 +1,6 @@
+{% if ansible_network_resources is defined %}
+{% set default_gateway = ansible_network_resources.static_routes[0].address_families[0].routes[0].next_hops[0].forward_router_address %}
+{% endif %}
 ! EIGRP
 ip routing
 router eigrp 10
