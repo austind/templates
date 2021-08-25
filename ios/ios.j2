@@ -35,7 +35,7 @@ hostname {{ hostname }}
 {% if 'C9300' in model or 'C9200' in model -%}
 {% include global.template_path + '/ios/interfaces_c9300_c9200-48.j2' %}
 {% endif -%}
-{% if 'C3560-48' in model -%}
+{% if 'C3560' in model -%}
 {% include global.template_path + '/ios/interfaces_c3560-48.j2' %}
 {% endif -%}
 !
