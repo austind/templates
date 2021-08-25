@@ -21,7 +21,9 @@ hostname {{ hostname }}
 {% include global.template_path + '/ios/stp_' + role + '.j2' %}
 {% include global.template_path + '/ios/users.j2' %}
 {% include global.template_path + '/ios/vlans.j2' %}
+{% if vtp_mode is defined or vtp_domain is defined or vtp_pass is defined -%}
 {% include global.template_path + '/ios/vtp.j2' %}
+{% endif -%}
 !
 ! Model-specific config
 {% if 'C9500-48Y4C' in model -%}
