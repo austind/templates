@@ -19,7 +19,7 @@ hostname {{ hostname }}
 {% include global.template_path + '/ios/snmp.j2' %}
 {% include global.template_path + '/ios/ssh.j2' %}
 {% include global.template_path + '/ios/stp_' + role + '.j2' %}
-{% include global.template_path + '/ios/users_' + role + '.j2' %}
+{% include global.template_path + '/ios/users.j2' %}
 {% include global.template_path + '/ios/vlans.j2' %}
 {% include global.template_path + '/ios/vtp.j2' %}
 !

@@ -1,0 +1,38 @@
+{% if 'C9' in model -%}
+  {% set type = 9 -%}
+  {% set user1_hash = global.user1_type9_hash -%}
+  {% set user2_hash = global.user2_type9_hash -%}
+  {% set user3_hash = global.user3_type9_hash -%}
+  {% set user4_hash = global.user4_type9_hash -%}
+  {% set user5_hash = global.user5_type9_hash -%}
+  {% set user6_hash = global.user6_type9_hash -%}
+  {% set secret_level15_hash = global.secret_level15_type9_hash -%}
+  {% set secret_level5_hash = global.secret_level5_type9_hash -%}
+{% else -%}
+  {% set type = 5 -%}
+  {% set user1_hash = global.user1_type5_hash -%}
+  {% set user2_hash = global.user2_type5_hash -%}
+  {% set user3_hash = global.user3_type5_hash -%}
+  {% set user4_hash = global.user4_type5_hash -%}
+  {% set user5_hash = global.user5_type5_hash -%}
+  {% set user6_hash = global.user6_type5_hash -%}
+  {% set secret_level15_hash = global.secret_level15_type5_hash -%}
+  {% set secret_level5_hash = global.secret_level5_type5_hash -%}
+{% endif -%}
+! Users
+username {{ global.user1_username }} privilege {{ global.user1_privilege }} secret {{ type }} {{ user1_hash }}
+username {{ global.user2_username }} privilege {{ global.user2_privilege }} secret {{ type }} {{ user2_hash }}
+username {{ global.user3_username }} privilege {{ global.user3_privilege }} secret {{ type }} {{ user3_hash }}
+username {{ global.user4_username }} privilege {{ global.user4_privilege }} secret {{ type }} {{ user4_hash }}
+enable secret 5 {{ secret_level15_hash }}
+{% if role == 'access' -%}
+username {{ global.user5_username }} privilege {{ global.user5_privilege }} secret {{ type }} {{ user5_hash }}
+username {{ global.user6_username }} privilege {{ global.user6_privilege }} secret {{ type }} {{ user5_hash }}
+enable secret level 5 5 {{ secret_level5_hash }}
+privilege exec level 5 ping
+privilege exec level 5 show ip
+privilege exec level 5 show vlan
+privilege exec level 5 show running-config
+privilege exec level 5 show running-config view full
+{% endif -%}
+!
