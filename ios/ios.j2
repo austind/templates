@@ -21,7 +21,7 @@ hostname {{ hostname }}
 {% include global.template_path + '/ios/stp_' + role + '.j2' %}
 {% include global.template_path + '/ios/users.j2' %}
 {% include global.template_path + '/ios/vlans.j2' %}
-{% if vtp_mode is string or vtp_domain is string or vtp_pass is string -%}
+{% if vtp_mode|length or vtp_domain|length or vtp_pass|length -%}
 {% include global.template_path + '/ios/vtp.j2' %}
 {% endif -%}
 !
