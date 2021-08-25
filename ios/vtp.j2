@@ -1,11 +1,11 @@
 ! VTP
-{% if vtp_mode is defined -%}
+{% if vtp_mode is string -%}
 vtp mode {{ vtp_mode }}
-{% endif %}
-{% if vtp_domain is defined -%}
+{% endif -%}
+{% if vtp_domain is string -%}
 vtp domain {{ vtp_domain }}
 {% endif -%}
-{% if vtp_password is defined -%}
+{% if vtp_password is string -%}
 vtp password {{ vtp_password }}
 {% endif -%}
 !
